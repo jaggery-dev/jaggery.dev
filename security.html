@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Security · Jaggery</title>
+<meta name="description" content="What Jaggery listens on, what leaves your house, how machines trust each other, and how to report a problem.">
+<meta name="theme-color" content="#f7f0e3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="mark" href="/" aria-label="Jaggery home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8.6Q6 5.2 9.3 5L23 4.2q4-.2 4.2 3.8l.5 14.6q.1 4-3.9 4.2l-14.1.7Q5.8 27.6 5.8 23.7Z" class="mark-fill"/><path d="M10 9.5l11.5-.6" stroke="#f3d29a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+    <span>jaggery</span>
+  </a>
+  <nav aria-label="Pages">
+    <a href="/#how">How it works</a>
+    <a href="/security">Security</a>
+  </nav>
+</header>
+
+<main class="page">
+
+<h1>Security</h1>
+<p class="lede">What Jaggery listens on, what it sends out, how machines come to trust each other, and what isn't protected yet. We'd rather you read this before installing than find out later.</p>
+
+<section>
+<h2>What it listens on</h2>
+<table>
+<thead><tr><th>Port</th><th>Who can reach it</th><th>What</th></tr></thead>
+<tbody>
+<tr><td><code>80</code></td><td>your home network</td><td>The page and <code>ai.local</code>, when the machine allows it. On Linux the installer grants just that, not root.</td></tr>
+<tr><td><code>7373</code></td><td>your home network</td><td>The same page and <code>ai.local</code>, and what machines show each other before they trust each other.</td></tr>
+<tr><td><code>7374</code></td><td>approved machines only</td><td>Mutual TLS between Jaggery machines.</td></tr>
+<tr><td><code>5353/udp</code></td><td>your home network</td><td>mDNS: finding machines, answering for <code>jaggery.local</code> and <code>ai.local</code>.</td></tr>
+</tbody>
+</table>
+<p class="dim">Nothing is opened on your router. If a firewall is on, the installer opens these to your local network only.</p>
+</section>
+
+<section>
+<h2>What leaves your house</h2>
+<ol>
+  <li><strong>Update checks.</strong> Each machine asks GitHub for a new release every 30 minutes. <code>jag update --policy off</code> stops it.</li>
+  <li><strong>Hosted models, only if you add one,</strong> and only to the providers and models you list, up to the spending cap you set. Every request is kept word for word: <code>jag outbound</code>.</li>
+</ol>
+<p>Nothing else. No telemetry, no account, no crash reports.</p>
+</section>
+
+<section>
+<h2>How machines trust each other</h2>
+<dl class="how">
+  <dt>A code, or your approval.</dt>
+  <dd>Seeing a machine on the network doesn't make it trusted. It joins with a six-word code from <code>jag invite</code>, which works once and expires, or when you run <code>jag approve</code>.</dd>
+  <dt>Its own keys.</dt>
+  <dd>Each machine makes a key pair the first time it runs. Machines remember each other's keys and talk over mutual TLS.</dd>
+  <dt>New models wait.</dt>
+  <dd>A model that turns up later isn't served on <code>ai.local</code> until you approve it, and approval is tied to its files.</dd>
+  <dt>Updates are signed.</dt>
+  <dd>Each machine installs a build only if it carries Jaggery's signature, even when it comes through another machine in the house. Machines update one at a time, and a build that won't start is rolled back.</dd>
+  <dt>Shared folders stay put.</dt>
+  <dd>Read-only unless you say otherwise. Hidden files and key files are never served. Old versions are kept for 30 days, and every access is logged.</dd>
+</dl>
+</section>
+
+<section>
+<h2>Web pages and the internet</h2>
+<p>Trusting the people in your house doesn't mean trusting every web page they open. Jaggery answers only devices on your home network, only when it's asked for by a local name such as <code>jaggery.local</code> or by its address, and it refuses a web page's attempts to change anything. A page on the internet can't use your models or read your shared folders through someone's browser, and a machine with a public address doesn't answer the internet.</p>
+</section>
+
+<section>
+<h2>What isn't protected yet</h2>
+<ul class="promises">
+  <li><strong>Everything on your home network is trusted.</strong><span>Like a printer: anyone on it can use <code>ai.local</code>, your shared folders and any hosted allowance, up to its cap. There are no accounts. Put guests and smart devices on a separate network.</span></li>
+  <li><strong>Another device can answer for <code>ai.local</code>.</strong><span>The names work over mDNS, which any device on the network can answer. Apps that hold secrets can use a machine's own name instead.</span></li>
+  <li><strong>The page has no sign-in.</strong><span>It shows your machines and activity. It can't change anything.</span></li>
+  <li><strong>Local names are plain HTTP.</strong><span>Traffic between Jaggery machines is encrypted; traffic from your phone to <code>jaggery.local</code> isn't.</span></li>
+  <li><strong>Releases are signed with a key, not yet keyless.</strong><span>Each machine installs only builds signed with Jaggery's key. Signing tied to the public build log comes at the launch.</span></li>
+</ul>
+</section>
+
+<section>
+<h2>Found a problem?</h2>
+<p>Please write to <a href="mailto:hello@jaggery.dev?subject=Security">hello@jaggery.dev</a> with "security" in the subject, rather than posting it publicly. Tell us what you found and how to reproduce it. A person will reply within two working days, agree a fix and a date with you, and credit you unless you'd rather not be named.</p>
+</section>
+
+</main>
+
+<footer>
+  <p class="first">This site sets no cookies, runs no analytics and loads nothing from anywhere else. <a href="/privacy">Privacy</a> · <a href="/security">Security</a></p>
+  <p>Jaggery is an independent open-source project, Apache-2.0.</p>
+  <p>© 2026</p>
+</footer>
+
+</div>
+</body>
+</html>

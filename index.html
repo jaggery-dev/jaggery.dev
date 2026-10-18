@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Jaggery: every computer in your home, working as one</title>
+<meta name="description" content="Jaggery is a small open-source program for each computer in your house. They find each other, show up on one page, and share their AI models through one address. No account, no telemetry.">
+<meta name="theme-color" content="#f7f0e3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="mark" href="/" aria-label="Jaggery home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8.6Q6 5.2 9.3 5L23 4.2q4-.2 4.2 3.8l.5 14.6q.1 4-3.9 4.2l-14.1.7Q5.8 27.6 5.8 23.7Z" class="mark-fill"/><path d="M10 9.5l11.5-.6" stroke="#f3d29a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+    <span>jaggery</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="#how">How it works</a>
+    <a href="#promises">Promises</a>
+    <a href="#alpha">Try it</a>
+    <a href="/security">Security</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero">
+  <span class="status">Private alpha</span>
+  <h1>Every computer in your home, working as one.</h1>
+  <p class="lede">Jaggery is a small, open-source program you run on each computer in your house. They find each other, show up on one page, and share their AI models through one address. No account. Nothing to configure.</p>
+  <div class="actions">
+    <a class="button" href="mailto:hello@jaggery.dev?subject=Jaggery%20alpha&amp;body=What%27s%20in%20my%20house%20(machines%2C%20and%20what%20runs%20on%20them)%3A%0A%0A">Ask to try it</a>
+    <a class="quiet" href="#how">See how it works</a>
+  </div>
+</div>
+
+<figure class="house" aria-label="A drawing of a house. A laptop, a desktop and a Raspberry Pi are joined by dotted lines to one address, ai.local.">
+  <svg viewBox="0 0 480 300" role="img" aria-hidden="true">
+    <path class="outline" d="M28 132 L240 28 L452 132"/>
+    <path class="outline" d="M58 118 V280 H422 V118"/>
+    <path class="link" d="M112 186 Q120 132 188 121"/>
+    <path class="link" d="M240 180 V136"/>
+    <path class="link" d="M355 208 Q350 132 292 121"/>
+    <rect class="hub" x="186" y="103" width="108" height="32" rx="16"/>
+    <text class="hub-text" x="240" y="124" text-anchor="middle">ai.local</text>
+    <!-- laptop -->
+    <rect class="device" x="80" y="188" width="64" height="42" rx="3"/>
+    <path class="device" d="M70 232 H154 L148 240 H76 Z"/>
+    <!-- desktop -->
+    <rect class="device" x="203" y="182" width="74" height="50" rx="4"/>
+    <path class="detail" d="M240 232 V244 M224 245 H256"/>
+    <!-- raspberry pi -->
+    <rect class="device" x="323" y="210" width="64" height="38" rx="4"/>
+    <rect class="device" x="335" y="221" width="16" height="16" rx="2"/>
+    <path class="detail" d="M361 218 H379 M361 226 H379 M361 234 H373"/>
+    <text class="label" x="112" y="262" text-anchor="middle">laptop</text>
+    <text class="label" x="240" y="266" text-anchor="middle">desktop</text>
+    <text class="label" x="355" y="268" text-anchor="middle">living-room-pi</text>
+  </svg>
+</figure>
+
+<section aria-labelledby="two">
+  <h2 id="two">Two commands to add a machine</h2>
+  <p class="dim">Ask a machine that's already in the house for a code, then type it on the new one. That's the whole setup.</p>
+  <div class="term" role="img" aria-label="Terminal: jag invite on the desktop prints a six-word code; jag join with that code on the laptop joins the house.">
+<pre><span class="who">desktop $</span> <span class="cmd">jag invite</span>
+<span class="out">on the machine you want to add, run:</span>
+
+    <span class="hl">jag join amber-attic-barley-brook-basil-acorn</span>
+
+<span class="out">the code works once, until 18:40.</span>
+
+<span class="who">laptop  $</span> <span class="cmd">jag join amber-attic-barley-brook-basil-acorn</span>
+<span class="out">looking for the machine that issued the code...</span>
+<span class="out">joined the house through desktop</span>
+<span class="out">both machines now trust each other.</span></pre>
+  </div>
+  <p class="dim">Then open <code>jaggery.local</code> on any phone or laptop at home. In our tests, the new machine was on the map 12 seconds after the code.</p>
+</section>
+
+<section aria-labelledby="get">
+  <h2 id="get">What you get</h2>
+  <div class="things">
+    <div class="thing">
+      <span class="addr">jaggery.local</span>
+      <h3>One page for the house</h3>
+      <p>Every machine, its memory, disks and GPU, and the apps it runs, like Jellyfin, Immich and Home Assistant. Works on a phone.</p>
+    </div>
+    <div class="thing">
+      <span class="addr">ai.local</span>
+      <h3>One address for AI</h3>
+      <p>Point a chat app or editor at it once. Each request goes to the machine that has the model ready, or ran it fastest. Ollama, LM Studio and llama.cpp today.</p>
+    </div>
+    <div class="thing">
+      <span class="addr">jag activity</span>
+      <h3>Nothing out of sight</h3>
+      <p>Who used which model, on which machine. Every file an agent read or changed, with old versions kept for 30 days.</p>
+    </div>
+  </div>
+</section>
+
+<section id="promises" aria-labelledby="promises-h">
+  <h2 id="promises-h">What Jaggery will not do</h2>
+  <ul class="promises">
+    <li><strong>Ask you to sign up.</strong> <span>There is no account with us, now or later.</span></li>
+    <li><strong>Report on you.</strong> <span>No telemetry. Jaggery doesn't tell us about you, your house or how you use it.</span></li>
+    <li><strong>Touch your router.</strong> <span>Nothing is opened to the internet. Everything stays on your home network.</span></li>
+    <li><strong>Trust a stranger.</strong> <span>A machine joins only with a one-time code or your approval. Machines talk to each other over mutual TLS.</span></li>
+    <li><strong>Serve a model you haven't seen.</strong> <span>A new model in the house stays off <code>ai.local</code> until you approve it.</span></li>
+    <li><strong>Take over.</strong> <span>Jaggery finds what you already run. It doesn't install apps or replace your setup.</span></li>
+  </ul>
+
+  <div class="leaves">
+    <h3>What leaves your house</h3>
+    <ol>
+      <li><strong>Update checks.</strong> Each machine asks GitHub for a new release every 30 minutes. Every release is signed, and each machine checks the signature before it installs one. Machines update one at a time, and a build that misbehaves rolls itself back. <code>jag update --policy off</code> stops it.</li>
+      <li><strong>Hosted models, only if you add one.</strong> You pick the providers and a spending cap. Every request is kept word for word, so you can read it: <code>jag outbound</code>.</li>
+    </ol>
+    <p class="dim">Nothing else. One thing to know: Jaggery trusts your home network and everything on it, the way a printer does, so put guests and smart devices on a separate network. Web pages and the internet are refused.</p>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="how-h">
+  <h2 id="how-h">How it works</h2>
+  <dl class="how">
+    <div><dt>One small program on each machine.</dt><dd>Linux, Raspberry Pi and Mac. Windows comes later.</dd></div>
+    <div><dt>Machines find each other the way your phone finds a printer.</dt><dd>Over mDNS, on your home network. There's no central server: any machine can show the page.</dd></div>
+    <div><dt>Names your devices already understand.</dt><dd><code>jaggery.local</code> and <code>ai.local</code> work on phones and laptops without setup.</dd></div>
+    <div><dt>It looks after itself.</dt><dd>Updates arrive one machine at a time and undo themselves if something goes wrong. <code>jag doctor</code> checks the machine and its network and tells you what to type to fix what fails.</dd></div>
+    <div><dt>Open source.</dt><dd>Written in Go, Apache-2.0. The code opens to everyone with the public alpha.</dd></div>
+  </dl>
+</section>
+
+<section class="name" aria-labelledby="name-h">
+  <h2 id="name-h">Why “jaggery”?</h2>
+  <blockquote>Jaggery is unrefined sugar, made at home in kitchens across South Asia. Simple, honest, a little sweet. That's how we want the computers in your home to feel.</blockquote>
+  <p class="dim after">The command is just <code>jag</code>.</p>
+</section>
+
+<section id="alpha" class="alpha" aria-labelledby="alpha-h">
+  <h2 id="alpha-h">Try it early</h2>
+  <p>We're letting people in a few at a time, so we can watch every first five minutes and fix what goes wrong before anyone else meets it.</p>
+  <p>If you look after the computers at home, write and tell us what's in your house: the machines, and what runs on them. A person reads every message and replies.</p>
+  <a class="button" href="mailto:hello@jaggery.dev?subject=Jaggery%20alpha&amp;body=What%27s%20in%20my%20house%20(machines%2C%20and%20what%20runs%20on%20them)%3A%0A%0A">hello@jaggery.dev</a>
+</section>
+
+</main>
+
+<footer>
+  <p class="first">This site sets no cookies, runs no analytics and loads nothing from anywhere else. <a href="/privacy">Privacy</a> · <a href="/security">Security</a></p>
+  <p>Jaggery is an independent open-source project, Apache-2.0.</p>
+  <p>© 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
