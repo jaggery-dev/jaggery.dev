@@ -39,9 +39,9 @@
 <thead><tr><th>Port</th><th>Who can reach it</th><th>What</th></tr></thead>
 <tbody>
 <tr><td><code>80</code></td><td>your home network</td><td>The page and <code>ai.local</code>, when the machine allows it. On Linux the installer grants just that, not root.</td></tr>
-<tr><td><code>7373</code></td><td>your home network</td><td>The same page and <code>ai.local</code>, and what machines show each other before they trust each other.</td></tr>
+<tr><td><code>7373</code></td><td>your home network</td><td>The same page, <code>ai.local</code> and the folder server at <code>ai.local/mcp</code>, and what machines show each other before they trust each other.</td></tr>
 <tr><td><code>7374</code></td><td>approved machines only</td><td>Mutual TLS between Jaggery machines.</td></tr>
-<tr><td><code>5353/udp</code></td><td>your home network</td><td>mDNS: finding machines, answering for <code>jaggery.local</code> and <code>ai.local</code>.</td></tr>
+<tr><td><code>5353/udp</code></td><td>your home network</td><td>mDNS: finding machines, answering for <code>jaggery.local</code>, <code>ai.local</code> and your apps' names.</td></tr>
 </tbody>
 </table>
 <p class="dim">Nothing is opened on your router. If a firewall is on, the installer opens these to your local network only.</p>
@@ -81,10 +81,11 @@
 <h2>What isn't protected yet</h2>
 <ul class="promises">
   <li><strong>Everything on your home network is trusted.</strong><span>Like a printer: anyone on it can use <code>ai.local</code>, your shared folders and any hosted allowance, up to its cap. There are no accounts. Put guests and smart devices on a separate network.</span></li>
-  <li><strong>Another device can answer for <code>ai.local</code>.</strong><span>The names work over mDNS, which any device on the network can answer. Apps that hold secrets can use a machine's own name instead.</span></li>
+  <li><strong>Another device can answer for <code>ai.local</code>.</strong><span>The names work over mDNS, which any device on the network can answer. Each machine listens for this and warns on the page and in <code>jag doctor</code>, but it can't stop it. Apps that hold secrets can use a machine's own name instead.</span></li>
+  <li><strong>Text can steer an AI.</strong><span>A file in a shared folder, or a reply from a hosted model, can carry instructions written for an AI, and an agent reading it may follow them. Jaggery doesn't filter for this. That's why folders are read-only unless you say so, every change can be undone, and nothing an agent can reach changes who or what the house trusts.</span></li>
   <li><strong>The page has no sign-in.</strong><span>It shows your machines and activity. It can't change anything.</span></li>
   <li><strong>Local names are plain HTTP.</strong><span>Traffic between Jaggery machines is encrypted; traffic from your phone to <code>jaggery.local</code> isn't.</span></li>
-  <li><strong>Releases are signed with a key, not yet keyless.</strong><span>Each machine installs only builds signed with Jaggery's key. Signing tied to the public build log comes at the launch.</span></li>
+  <li><strong>Releases are signed with a key, not yet keyless.</strong><span>Each machine installs only builds signed with Jaggery's key. Signing tied to the public build log is planned for 1.0.</span></li>
 </ul>
 </section>
 
