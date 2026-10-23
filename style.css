@@ -9,6 +9,8 @@
   --ink-dim: #5f513f;
   --ink-faint: #8a7a63;
   --accent: #c9862b;      /* jaggery amber, for fills and marks */
+  --jar-lid: #3C291D;     /* logo on light: brown lid, amber body */
+  --jar-body: #BB731B;
   --accent-ink: #8f5a12;  /* amber dark enough for text on cream (AA) */
   --term-bg: #1e1a14;
   --term-ink: #f3e9d6;
@@ -30,6 +32,8 @@
     --ink-dim: #c9bda5;
     --ink-faint: #9a8e78;
     --accent: #e0a74a;
+    --jar-lid: #F2EADD;   /* logo on dark: cream lid, gold body */
+    --jar-body: #EBB25F;
     --accent-ink: #e8b866;
     --term-bg: #0e0c09;
   }
@@ -60,7 +64,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .mark { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--ink); }
 .mark svg { width: 26px; height: 26px; }
-.mark span { font: 600 1.3rem/1 var(--serif); letter-spacing: -0.01em; }
+.mark span { font: 800 1.35rem/1 "Alegreya Sans", var(--sans); letter-spacing: -0.02em; padding-bottom: 2px; }
 .top nav { margin-left: auto; display: flex; gap: 1.25rem; font-size: 0.92rem; }
 .top nav a { color: var(--ink-dim); text-decoration: none; }
 .top nav a:hover { color: var(--ink); }
@@ -190,7 +194,8 @@ footer {
 }
 footer p { margin: 0; }
 footer .first { flex-basis: 100%; color: var(--ink-dim); }
-.mark .mark-fill { fill: var(--accent); }
+.mark .jar-lid { fill: var(--jar-lid); }
+.mark .jar-body { fill: var(--jar-body); }
 .name .after { margin-top: 1rem; }
 @media (max-width: 30rem) { .term { font-size: 0.7rem; padding: 0.9rem 1rem; } }
 
