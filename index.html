@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,14 +7,33 @@
 <meta name="referrer" content="no-referrer">
 <title>Jaggery: every computer in your home, working as one</title>
 <meta name="description" content="Jaggery is a small open-source program for each computer in your house. They find each other, show up on one page, and share their AI models through one address. No account, no telemetry.">
+<link rel="canonical" href="https://jaggery.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jaggery">
+<meta property="og:url" content="https://jaggery.dev/">
+<meta property="og:title" content="Jaggery: every computer in your home, working as one">
+<meta property="og:description" content="One page for every machine in the house, short names for your apps, and one address for all your local AI models. Open source, no account, no telemetry.">
+<meta property="og:image" content="https://jaggery.dev/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Jaggery jar and the words: Every computer in your home, working as one.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f7f0e3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Jaggery",
+ "description": "A small open-source program for each computer in your house: they find each other, show up on one page, and share their AI models through one address.",
+ "url": "https://jaggery.dev/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Linux, macOS",
+ "license": "https://www.apache.org/licenses/LICENSE-2.0", "codeRepository": "https://github.com/jaggery-dev/jaggery",
+ "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the content</a>
 <div class="wrap">
 
 <header class="top">
@@ -24,48 +43,41 @@
   </a>
   <nav aria-label="Sections">
     <a href="#how">How it works</a>
-    <a href="#promises">Promises</a>
-    <a href="#alpha">Try it</a>
+    <a href="#compare">Compare</a>
+    <a href="#faq">FAQ</a>
     <a href="/security">Security</a>
+    <a href="https://github.com/jaggery-dev/jaggery">GitHub</a>
   </nav>
 </header>
 
-<main>
+<main id="main">
 
 <div class="hero">
-  <span class="status">Private alpha</span>
+  <a class="status" href="https://github.com/jaggery-dev/jaggery/releases/latest">Alpha · v0.6.0, the first public release</a>
   <h1>Every computer in your home, working as one.</h1>
   <p class="lede">Jaggery is a small, open-source program you run on each computer in your house. They find each other, show up on one page, and share their AI models through one address. No account. Nothing to configure.</p>
-  <div class="actions">
-    <a class="button" href="mailto:hello@jaggery.dev?subject=Jaggery%20alpha&amp;body=What%27s%20in%20my%20house%20(machines%2C%20and%20what%20runs%20on%20them)%3A%0A%0A">Ask to try it</a>
-    <a class="quiet" href="#how">See how it works</a>
+  <div class="install" id="install">
+    <div class="term wrap" role="img" aria-label="Terminal: curl -fsSL https://jaggery.dev/install | sh">
+<pre><span class="who">$</span> <span class="cmd select">curl -fsSL https://jaggery.dev/install | sh</span></pre>
+    </div>
+    <p class="dim small">On each computer: Linux, a Raspberry Pi, or a Mac with Apple silicon. <a href="https://github.com/jaggery-dev/jaggery/blob/prod/scripts/get.sh">Read the script first</a>: it checks the build against signed checksums before installing it as a service. <a href="#alpha">More about installing</a>.</p>
   </div>
 </div>
 
-<figure class="house" aria-label="A drawing of a house. A laptop, a desktop and a Raspberry Pi are joined by dotted lines to one address, ai.local.">
-  <svg viewBox="0 0 480 300" role="img" aria-hidden="true">
-    <path class="outline" d="M28 132 L240 28 L452 132"/>
-    <path class="outline" d="M58 118 V280 H422 V118"/>
-    <path class="link" d="M112 186 Q120 132 188 121"/>
-    <path class="link" d="M240 180 V136"/>
-    <path class="link" d="M355 208 Q350 132 292 121"/>
-    <rect class="hub" x="186" y="103" width="108" height="32" rx="16"/>
-    <text class="hub-text" x="240" y="124" text-anchor="middle">ai.local</text>
-    <!-- laptop -->
-    <rect class="device" x="80" y="188" width="64" height="42" rx="3"/>
-    <path class="device" d="M70 232 H154 L148 240 H76 Z"/>
-    <!-- desktop -->
-    <rect class="device" x="203" y="182" width="74" height="50" rx="4"/>
-    <path class="detail" d="M240 232 V244 M224 245 H256"/>
-    <!-- raspberry pi -->
-    <rect class="device" x="323" y="210" width="64" height="38" rx="4"/>
-    <rect class="device" x="335" y="221" width="16" height="16" rx="2"/>
-    <path class="detail" d="M361 218 H379 M361 226 H379 M361 234 H373"/>
-    <text class="label" x="112" y="262" text-anchor="middle">laptop</text>
-    <text class="label" x="240" y="266" text-anchor="middle">desktop</text>
-    <text class="label" x="355" y="268" text-anchor="middle">living-room-pi</text>
-  </svg>
+</div>
+
+<figure class="shot" aria-labelledby="shot-cap">
+  <div class="shot-row">
+    <picture class="desk">
+      <source srcset="img/page-home.webp" type="image/webp">
+      <img src="img/page-home.png" width="1280" height="860" alt="The page at jaggery.local: Good evening, the house is well. Six apps with their short names, like chat.local and photos.local, and four machines, desktop, laptop, living-room-pi and nas, with their hardware, apps and AI models.">
+    </picture>
+    <img class="phone" src="img/page-home-phone.webp" srcset="img/page-home-phone.webp 1x, img/page-home-phone@2x.webp 2x" width="390" height="844" loading="lazy" alt="The same page on a phone.">
+  </div>
+  <figcaption id="shot-cap">The page at <code>jaggery.local</code>, on a laptop and a phone. The house is made up; <a href="img/page-ai.webp">here's its AI view</a>.</figcaption>
 </figure>
+
+<div class="wrap">
 
 <section aria-labelledby="two">
   <h2 id="two">Two commands to add a machine</h2>
@@ -145,13 +157,84 @@
 
 <section id="how" aria-labelledby="how-h">
   <h2 id="how-h">How it works</h2>
+  <figure class="house" aria-label="A drawing of a house. A laptop, a desktop and a Raspberry Pi are joined by dotted lines to one address, ai.local.">
+    <svg viewBox="0 0 480 300" role="img" aria-hidden="true">
+      <path class="outline" d="M28 132 L240 28 L452 132"/>
+      <path class="outline" d="M58 118 V280 H422 V118"/>
+      <path class="link" d="M112 186 Q120 132 188 121"/>
+      <path class="link" d="M240 180 V136"/>
+      <path class="link" d="M355 208 Q350 132 292 121"/>
+      <rect class="hub" x="186" y="103" width="108" height="32" rx="16"/>
+      <text class="hub-text" x="240" y="124" text-anchor="middle">ai.local</text>
+      <rect class="device" x="80" y="188" width="64" height="42" rx="3"/>
+      <path class="device" d="M70 232 H154 L148 240 H76 Z"/>
+      <rect class="device" x="203" y="182" width="74" height="50" rx="4"/>
+      <path class="detail" d="M240 232 V244 M224 245 H256"/>
+      <rect class="device" x="323" y="210" width="64" height="38" rx="4"/>
+      <rect class="device" x="335" y="221" width="16" height="16" rx="2"/>
+      <path class="detail" d="M361 218 H379 M361 226 H379 M361 234 H373"/>
+      <text class="label" x="112" y="262" text-anchor="middle">laptop</text>
+      <text class="label" x="240" y="266" text-anchor="middle">desktop</text>
+      <text class="label" x="355" y="268" text-anchor="middle">living-room-pi</text>
+    </svg>
+  </figure>
   <dl class="how">
     <div><dt>One small program on each machine.</dt><dd>Linux, Raspberry Pi and Macs with Apple silicon. Windows comes later.</dd></div>
-    <div><dt>Machines find each other the way your phone finds a printer.</dt><dd>Over mDNS, on your home network. There's no central server: any machine can show the page.</dd></div>
+    <div><dt>Machines find each other the way your phone finds a printer.</dt><dd>Over mDNS, on your home network. They trust each other only after a one-time code or your approval, and then talk over mutual TLS.</dd></div>
+    <div><dt>No central server.</dt><dd>One machine answers for <code>jaggery.local</code> and <code>ai.local</code>; if it goes away, another takes over. Any machine can show the page.</dd></div>
     <div><dt>Names your devices already understand.</dt><dd><code>jaggery.local</code>, <code>ai.local</code> and your apps' names work on phones and laptops without setup.</dd></div>
     <div><dt>It looks after itself.</dt><dd>Updates arrive one machine at a time and undo themselves if something goes wrong. <code>jag doctor</code> checks the machine and its network and tells you what to type to fix what fails.</dd></div>
-    <div><dt>Open source.</dt><dd>Written in Go, Apache-2.0. The code opens to everyone with the public alpha.</dd></div>
+    <div><dt>Open source.</dt><dd>Written in Go, Apache-2.0. <a href="https://github.com/jaggery-dev/jaggery">The code is on GitHub</a>, with <a href="https://github.com/jaggery-dev/jaggery/blob/prod/docs/how-it-works.md">the long version of this</a>.</dd></div>
   </dl>
+</section>
+
+<section id="compare" aria-labelledby="compare-h">
+  <h2 id="compare-h">How it compares</h2>
+  <dl class="compare">
+    <div><dt>Tailscale, ZeroTier</dt><dd>They join your machines into one network across the internet. Jaggery works inside the home network you already have, with no account, and adds the page, the names and AI routing. It runs happily alongside Tailscale.</dd></div>
+    <div><dt>Avahi, Bonjour</dt><dd>They give machines <code>.local</code> names. Jaggery uses the same mDNS, and adds trust between machines, names for apps, and one page.</dd></div>
+    <div><dt>Homepage, Homarr, Dashy</dt><dd>Dashboards you write by hand. Jaggery finds the machines and apps itself.</dd></div>
+    <div><dt>LiteLLM, Open WebUI</dt><dd>LiteLLM is a proxy you configure with your providers, and Open WebUI is a chat app. Jaggery finds the runtimes on every machine and routes between them; point Open WebUI at <code>ai.local</code> and it sees the whole house.</dd></div>
+    <div><dt>exo</dt><dd>It splits one large model across machines. Jaggery sends each request to one machine that can run the model whole.</dd></div>
+  </dl>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Questions</h2>
+  <div class="faq">
+    <details>
+      <summary>Is it safe to run on my network?</summary>
+      <p>Jaggery trusts your home network and everything on it, the way a printer or a media server does: anyone on it can use <code>ai.local</code>, the page and any folders you share. So put guests and smart devices on a separate network, and don't run it on a network you don't control. Web pages and the internet are refused, machines join only with a code, and updates must carry Jaggery's signature. The details, including what isn't protected yet, are on the <a href="/security">security page</a>.</p>
+    </details>
+    <details>
+      <summary>Do I need a GPU, or AI at all?</summary>
+      <p>No. Without an AI runtime you still get the page and the names. If a machine runs Ollama, LM Studio or llama.cpp, its models appear at <code>ai.local</code> for every device in the house. A GPU makes them faster, but small models run fine on a CPU.</p>
+    </details>
+    <details>
+      <summary>What does it send to the internet?</summary>
+      <p>Each machine asks GitHub for a new release every 30 minutes, and <code>jag update --policy off</code> stops it. Hosted models are used only if you add a provider. Nothing else: no telemetry, no account, no crash reports.</p>
+    </details>
+    <details>
+      <summary>Does it work with Tailscale?</summary>
+      <p>Yes, side by side. Jaggery accepts requests from Tailscale's addresses, and a machine that isn't on the home network, such as a cloud machine over a VPN, can join with <code>jag join &lt;code&gt; --at &lt;address&gt;</code>.</p>
+    </details>
+    <details>
+      <summary>What about phones?</summary>
+      <p>The page works in any phone's browser. <code>.local</code> names work on iPhones; on Android they depend on the version and the browser, and we'd like to hear what yours does (<a href="https://github.com/jaggery-dev/jaggery/issues/18">issue #18</a>).</p>
+    </details>
+    <details>
+      <summary>And Windows?</summary>
+      <p>Not yet (<a href="https://github.com/jaggery-dev/jaggery/issues/17">issue #17</a>). Run Jaggery on your other machines, and Windows apps can still use <code>ai.local</code> and open the page.</p>
+    </details>
+    <details>
+      <summary>How do I remove it?</summary>
+      <p><code>curl -fsSL https://jaggery.dev/install | sh -s -- --uninstall</code> removes the service and the program, and keeps the machine's identity so it can rejoin. To remove that too, delete <code>~/.config/jaggery</code> on Linux or <code>~/Library/Application Support/jaggery</code> on a Mac.</p>
+    </details>
+    <details>
+      <summary>Who makes it, and what does it cost?</summary>
+      <p>Jaggery is an independent open-source project with one maintainer for now. It's free, under the Apache-2.0 licence, with no account and nothing to pay. Help is welcome: see <a href="/contribute">how to contribute</a>.</p>
+    </details>
+  </div>
 </section>
 
 <section class="name" aria-labelledby="name-h">
@@ -161,16 +244,20 @@
 </section>
 
 <section id="alpha" class="alpha" aria-labelledby="alpha-h">
-  <h2 id="alpha-h">Try it early</h2>
-  <p>We're letting people in a few at a time, so we can watch every first five minutes and fix what goes wrong before anyone else meets it.</p>
-  <p>If you look after the computers at home, write and tell us what's in your house: the machines, and what runs on them. A person reads every message and replies.</p>
-  <a class="button" href="mailto:hello@jaggery.dev?subject=Jaggery%20alpha&amp;body=What%27s%20in%20my%20house%20(machines%2C%20and%20what%20runs%20on%20them)%3A%0A%0A">hello@jaggery.dev</a>
+  <h2 id="alpha-h">Install it</h2>
+  <p>On each computer: Linux (including a Raspberry Pi 2 or newer) or a Mac with Apple silicon. It asks for your password once, to set Jaggery up as a service.</p>
+  <div class="term wrap" role="img" aria-label="Terminal: the install command.">
+<pre><span class="who">$</span> <span class="cmd select">curl -fsSL https://jaggery.dev/install | sh</span></pre>
+  </div>
+  <p class="dim">The script picks the build for your machine, checks it against the release's signed checksums, and installs it. <a href="https://github.com/jaggery-dev/jaggery/blob/prod/scripts/get.sh">Read it first</a>, or install by hand from <a href="https://github.com/jaggery-dev/jaggery/releases">the releases</a>. On a Mac, click <strong>Allow</strong> when macOS asks to let <code>jag</code> find devices on your network.</p>
+  <p>Then add the next computer with <code>jag invite</code> and <code>jag join</code>, and open <code>http://jaggery.local</code> on any phone or laptop at home. <a href="https://github.com/jaggery-dev/jaggery/blob/prod/docs/getting-started.md">Getting started</a> has the rest.</p>
+  <p>This is an alpha: it works in our houses, and we want to hear where it doesn't work in yours. Read the <a href="https://github.com/jaggery-dev/jaggery/blob/prod/docs/known-issues.md">known issues</a> first. Then tell us what's in your house and how it went: <a href="https://github.com/jaggery-dev/jaggery/issues/new/choose">an issue</a> for anything that broke, <a href="https://github.com/jaggery-dev/jaggery/discussions">Discussions</a> for everything else, or <a href="mailto:hello@jaggery.dev?subject=Jaggery%20alpha">hello@jaggery.dev</a>. A person reads every message.</p>
 </section>
 
 </main>
 
 <footer>
-  <p class="first">This site sets no cookies, runs no analytics and loads nothing from anywhere else. <a href="/privacy">Privacy</a> · <a href="/security">Security</a></p>
+  <p class="first">This site sets no cookies, runs no analytics and loads nothing from anywhere else. <a href="/privacy">Privacy</a> · <a href="/security">Security</a> · <a href="/contribute">Contribute</a> · <a href="https://github.com/jaggery-dev/jaggery">GitHub</a> · <a href="https://github.com/jaggery-dev/jaggery/releases">Releases</a></p>
   <p>Jaggery is an independent open-source project, Apache-2.0.</p>
   <p>© 2026</p>
 </footer>

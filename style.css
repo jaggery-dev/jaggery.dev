@@ -209,3 +209,42 @@ footer .first { flex-basis: 100%; color: var(--ink-dim); }
 .page ol { padding-left: 1.25rem; }
 .page ol li { margin-bottom: 0.6rem; }
 .term.wrap pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Launch page additions */
+.skip { position: absolute; left: -999px; top: 0; padding: 0.6rem 1rem; background: var(--ink); color: var(--bg); border-radius: 0 0 10px 0; z-index: 10; }
+.skip:focus { left: 0; }
+a.status { text-decoration: none; }
+a.status:hover { color: var(--ink); border-color: var(--ink-faint); }
+.install { margin-top: 0.5rem; max-width: 36rem; }
+.install .term { margin: 0 0 0.75rem; }
+.small { font-size: 0.9rem; }
+.select { user-select: all; -webkit-user-select: all; }
+
+/* The product, wider than the text column */
+.shot { margin: 3rem auto 0; max-width: 64rem; padding: 0 1.5rem; }
+.shot-row { display: flex; gap: 1.25rem; align-items: flex-end; justify-content: center; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 12px 32px -12px rgb(43 33 24 / 0.35); background: #14110d; }
+.shot .desk { flex: 1 1 auto; min-width: 0; }
+.shot .phone { flex: 0 0 auto; width: 13rem; border-radius: 22px; }
+@media (max-width: 44rem) { .shot .phone { display: none; } }
+.shot figcaption { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.9rem; }
+
+/* How it works: the drawing now lives here */
+#how .house { margin: 1.25rem 0 1.5rem; }
+
+/* Compare */
+dl.compare { margin: 1.25rem 0 0; display: grid; gap: 0.9rem; }
+dl.compare div { display: grid; gap: 0.15rem 1.25rem; }
+@media (min-width: 40rem) { dl.compare div { grid-template-columns: 11rem 1fr; } }
+dl.compare dt { font-weight: 600; }
+dl.compare dd { margin: 0; color: var(--ink-dim); }
+
+/* Questions */
+.faq { margin-top: 1.25rem; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 0.95rem 2rem 0.95rem 0; font-weight: 600; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 0.25rem; top: 0.8rem; font: 400 1.3rem var(--mono); color: var(--accent-ink); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { color: var(--ink-dim); margin: 0 0 1.1rem; }
+@media (max-width: 42rem) { .top nav { gap: 1rem; } .top nav a:nth-child(n+4) { display: none; } }
